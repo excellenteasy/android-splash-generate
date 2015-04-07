@@ -1,0 +1,9 @@
+# temporary directories
+tmp
+
+# Logs
+logs
+*.log
+
+# Dependency directory
+node_modules
