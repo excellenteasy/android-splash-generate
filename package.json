@@ -33,7 +33,7 @@
   },
   "files": [
     "index.js",
-    "cli.js"
+    "bin/android-splash-generate.js"
   ],
   "keywords": [
     "cli",
