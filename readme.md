@@ -9,6 +9,10 @@ The default splash screen image file names and required sizes for android are re
 
 The files created have the default names as you might want to use them, for example, in [`config.xml`](http://docs.phonegap.com/en/3.5.0/config_ref_images.md.html) of a PhoneGap/Cordova project and the correct dimensions.
 
+## Important
+
+Require node.js v0.10.46 and npm v2.15.1
+
 ## How does it work?
 
 A 2208x2208 source image gets scaled first and then cropped to the target dimensions. If you put the relevant part (logo, text, etc.) of your splash screen in the exact center of your source image, this means that the resulting images are all going to be centered as well.
