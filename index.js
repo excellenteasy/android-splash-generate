@@ -1,5 +1,5 @@
 'use strict'
-var splash = require('android-splash')
+var splash = require('@randy.tarampi/android-splash')
 var lwip = require('@randy.tarampi/lwip')
 var Q = require('q')
 var path = require('path')

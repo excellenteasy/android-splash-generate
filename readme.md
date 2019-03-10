@@ -21,14 +21,14 @@ A 2208x2208 source image gets scaled first and then cropped to the target dimens
 ## Install
 
 ```sh
-$ npm install --save android-splash-generate
+$ npm install --save @randy.tarampi/android-splash-generate
 ```
 
 
 ## Usage
 
 ```js
-var generate = require('android-splash-generate');
+var generate = require('@randy.tarampi/android-splash-generate');
 
 generate('path/to/source.png', 'output/splash/').then(function() {
 	// splash images created
@@ -40,7 +40,7 @@ generate('path/to/source.png', 'output/splash/').then(function() {
 ## CLI
 
 ```sh
-$ npm install --global android-splash-generate
+$ npm install --global @randy.tarampi/android-splash-generate
 ```
 
 ```sh

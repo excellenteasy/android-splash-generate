@@ -1,45 +1,25 @@
 language: node_js
-dist: xenial
-node_js:
-  - 8
-  - 4
-  - 6
-  - 10
-  - node
-sudo: false
-cache: npm
 notifications:
   email: false
-  slack:
-    secure: Ms5NpfsH+acxe2iULh+z4lQ8U+zLMNylcQCDUc1oAY+2ubjdFsyuw4fDeAN0NdquDD6GEPPD1XF1aZBjWJRNe7bmVCUnu9QAspvuIHOHrikJYunz6so5Fsh2pr96zdJRDnNk3Xu0oMMNhYdh/qpIHpu/GOEkJW+BGDCUntudc+0=
-before_install:
-- npm i -g npm@^2.0.0
-- npm i -g pangyp
-- npm prune
-install:
-- npm install --node-gyp=$(which pangyp)
-before_script:
-- curl -Lo travis_after_all.py https://raw.github.com/dmakhno/travis_after_all/master/travis_after_all.py
-after_success:
-- python travis_after_all.py
-- export $(cat .to_export_back)
-after_failure:
-- python travis_after_all.py
-- export $(cat .to_export_back)
+dist: xenial
+node_js:
+- 8
+- 6
+- 10
+- node
 before_deploy:
-- rm -f travis_after_all.py .to_export_back
-after_script:
-- echo leader=$BUILD_LEADER status=$BUILD_AGGREGATE_STATUS
+- git config --local user.name "$TRAVIS_AUTHOR_NAME"
+- git config --local user.email "$TRAVIS_AUTHOR_EMAIL"
 deploy:
-  provider: npm
-  email: david@excellenteasy.com
+  provider: script
+  script: npx semantic-release
   skip_cleanup: true
   on:
     branch: master
-    repo: excellenteasy/android-splash-generate
-    condition: "$BUILD_LEADER$BUILD_AGGREGATE_STATUS = YESothers_succeeded"
-  api_key:
-    secure: DcLCvKwnYudLFrbxBrPc6ahYc+Lqxoe2K0qKw9/cICllebQuQL6MLGQq+GNsfQ9ACmL1SMpsK1/AF9D+wazyuCDSKfqmuh5QYxWYurkdjyYjstzt5FQRPv8wZS+tuVG5krSNS4TGe8P8lNAne3A+fYBPcj81St9aHrhuNATtpik=
+    node: 8
+    os: linux
+sudo: false
 env:
   global:
-    secure: cqfjULv++BhPCcTbB4SgnN2rRQfajryycbXxOrfTwvAk/kGhCU5UzLb84zdhaRVKXLksThjgBtd6KV5OFFluBAVCpxDUOE+IbZeFIcuPGHl4433fa1NgDzYcPtY5MsTYNIfNDVtnGSzcgewwAT8pE+AM3N2/JrFwjOC1+efR9FA=
+  - secure: pDk/asMOWbfTz9zZG/BC11LRweqEVM84evm37TFi5lm3vNuCOFz/L4aeXjzUv19XYhcId2BysoJBV5cuuOwNVxvCMAWQ91jGkXIedhLeavY+PB18OK6KDPlhfUL2chigZUV3u5aEglyUbl+/+5/Z4XU5PIGWoEZWqeOXykQMbqzvJR/W8/LdhhbQHqLl/qWOaJ5eHAsd+kgQEA0z6xSFtd+HqT6pHYgljTCtw/VSQpSi9hRFWGrjwPEfuEaMOlwCtexRzoQf0xhcM1Pt7AKLchpLjshjgi+7E8ZTwHI/29OIAAmSrLe+6IwKd8k0ayTN10I63mqZmDtiDEH+1YX392WndFgfPso0Ne3hXR8Eiaa6aQ1LLKJFSr9MEOPG5bwHKBmYDCp78G4KvvDKLYplhnTEiXb/c26//Kblkej1x2rzyd/YXd+r86yRpI4ph4VLN/pmVnoEA2z0rTypujx7P0H3YpiqkXcv896dNvH0LiEh1VSErRZHGc9jfgguEg8Rcy0e93VH2/kKpu7YbW3R7RWMqUz8c1PfKVrGBVyZBhtyXMyJGixdmBKKkjjDub5+EfL4nyHV/6P2jNbXvXS4/QK350f8s8CPtQx70ZGxk2443nugD9w1zeTfdwRjgp/nhBrtUo9mUCQXaXFvLs/I4xddxIke/mZLBVm5WQQLpds=
+  - secure: YQ3ZoYZg2PA6qWafrW+gpKbWX0V7dXYf2HiEdf6B5jhCcX7ZC60faE/6pBxSz4jq5JqInNVvKFyaXX09SzyyI73coXQMSFLohp+Z+kk7XEl2+X7OXqa/aBtrHcXKg7WU55OPohtM9xZ1HYcusun1sib0S1Hlruc+hTU/mHZvDzXlgEy9poMb9gEhNZxhpr2AQvXGwiu9GIoZaMzx//M3XykfxMbN9GW3wN+FW/DVZo8ouskA7dakAYcWkCMqIjy86XeL9Zbg3zWsY4jJIpq7ZwcQHp2etUEZiwsP6Vezip7mk0iQpbcsRbmSU8JCenxfVPSPIsv604wdBlIS+UILEyi2qPi2Hfh2rtmFkEDJW1B01ukhBnYRDXzmqFLRjGgGCZJpa/SCEIJmQkhLVavA7TB2CQ5Qft2UP5WTy0cBzFWhICOAUfYscAlGs08HVfyobw0ngHG8jV/qUMV7rQE8BfECl4msVuqVU1GIZdFFfMV9NzW9M95Yuo+YrVPWoKRd2UXdXjUVzzGWZ75MOsw3y9TqR2DLWCYEbBTq5lKUDf2sQUpxAkMCWZHyCol6y1lOUrnshudLee0v+DunqbEGD2ohigfTwUOtMjX3Lw9kukXCYeA8zo6T83tSUQFDgXAg+lSCJ4oe1wMWjiz9U5vPvALEY96LVfGwr2MD36SaRUU=
