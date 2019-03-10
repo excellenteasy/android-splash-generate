@@ -1,12 +1,13 @@
 language: node_js
+dist: xenial
 node_js:
-- iojs-v1
-- '0.12'
-- '0.10'
+  - 8
+  - 4
+  - 6
+  - 10
+  - node
 sudo: false
-cache:
-  directories:
-  - node_modules
+cache: npm
 notifications:
   email: false
   slack:
