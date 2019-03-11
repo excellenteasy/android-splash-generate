@@ -28,7 +28,6 @@ function cli () {
 
   if (input) {
     generate(argv.input || argv.i, output)
-    return
   } else {
     console.error('Please specify an input icon file witht the `-i` option.')
   }
