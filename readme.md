@@ -1,7 +1,7 @@
 # android-splash-generate 
 [![Build Status](https://travis-ci.com/randytarampi/android-splash-generate.svg?branch=master)](https://travis-ci.com/randytarampi/android-splash-generate)
 [![Dependency Status](https://david-dm.org/randytarampi/android-splash-generate.svg)](https://david-dm.org/randytarampi/android-splash-generate)
-[![devDependency Status](https://david-dm.org/randytarampi/android-splash-generate/dev-status.svg)](https://david-dm.org/randytarampi/android-splash-generate#info=devDependencies) [![Greenkeeper badge](https://badges.greenkeeper.io/randytarampi/android-splash-generate.svg)](https://greenkeeper.io/)
+[![devDependency Status](https://david-dm.org/randytarampi/android-splash-generate/dev-status.svg)](https://david-dm.org/randytarampi/android-splash-generate#info=devDependencies) 
 
 > Generate all required splash screen images from one source. Right size, right file name.
 
