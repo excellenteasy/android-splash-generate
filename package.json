@@ -5,7 +5,7 @@
   "bugs": "https://github.com/randytarampi/android-splash-generate/issues",
   "homepage": "https://github.com/randytarampi/android-splash-generate",
   "dependencies": {
-    "@randy.tarampi/android-splash": "^2.1.0",
+    "@randy.tarampi/android-splash": "^2.1.1",
     "@randy.tarampi/generic-icon-splash-generate": "^2.0.0",
     "minimist": "^1.2.5",
     "snyk": "^1.316.1"
